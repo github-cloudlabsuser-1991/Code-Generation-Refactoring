@@ -8,30 +8,29 @@ def calculate_sum(arr):
       result += num
    return result
 
-def main():
-   try:
-      n = int(input("Enter the number of elements (1-100): "))
-      if not 1 <= n <= MAX:
+def read_integers():
+    try:
+        n = int(input("Enter the number of elements (1-100): "))
+        if not 1 <= n <= MAX:
             print("Invalid input. Please provide a digit ranging from 1 to 100.")
             exit(1)
-
-      arr = []
-
-      print(f"Enter {n} integers:")
-      for _ in range(n):
+        arr = []
+        print(f"Enter {n} integers:")
+        for _ in range(n):
             try:
-               arr.append(int(input()))
+                arr.append(int(input()))
             except ValueError:
-               print("Invalid input. Please enter valid integers.")
-               exit(1)
+                print("Invalid input. Please enter valid integers.")
+                exit(1)
+        return arr
+    except KeyboardInterrupt:
+        print("\nProgram terminated by user.")
+        exit(1)
 
-      total = calculate_sum(arr)
-
-      print("Sum of the numbers:", total)
-
-   except KeyboardInterrupt:
-      print("\nProgram terminated by user.")
-      exit(1)
+def main():
+    arr = read_integers()
+    total = calculate_sum(arr)
+    print("Sum of the numbers:", total)
 
 if __name__ == "__main__":
    main()
